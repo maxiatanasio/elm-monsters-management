@@ -1,0 +1,32 @@
+{
+  "monsters" : [
+    {
+      "id": 1,
+      "name": "Elmo",
+      "pow": 124,
+      "lif": 156,
+      "spd": 174
+    },
+    {
+      "id": 1,
+      "name": "Sonora",
+      "pow": 94,
+      "lif": 192,
+      "spd": 134
+    },
+    {
+      "id": 3,
+      "name": "Satura",
+      "pow": 144,
+      "lif": 126,
+      "spd": 144
+    },
+    {
+      "id": 4,
+      "name": "Neptuno",
+      "pow": 189,
+      "lif": 78,
+      "spd": 112
+    }
+  ]
+}
