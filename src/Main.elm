@@ -20,7 +20,7 @@ init _ =
         modal = Close
     },
     get {
-        url = "mocks/monsters.json",
+        url = "src/mocks/monsters.json",
         expect = expectJson GotMonsters monsterListDecoder
         }
     )
