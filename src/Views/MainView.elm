@@ -5,13 +5,14 @@ import Html exposing (Html, div, text)
 import Html.Attributes exposing (style)
 import PageDataModel exposing (ModalStatus(..), Model)
 import Views.GeneralViews exposing (monsterCardContainer, monstersCount)
-import Views.StyledViews exposing (button, container, modal)
+import Views.StyledViews exposing (button, container, modal, separator)
 mainView: Model -> Html Message
 mainView model =
     container [
         div [ style "margin-bottom" "20px"] [
             button "Add new monster" OpenModal
         ],
+        separator (),
         (monstersCount model),
         monsterCardContainer model.monsters,
         (case model.modal of

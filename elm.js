@@ -6185,6 +6185,40 @@ var $author$project$Main$update = F2(
 	});
 var $author$project$Actions$OpenModal = {$: 1};
 var $elm$html$Html$button = _VirtualDom_node('button');
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
+var $elm$core$Tuple$second = function (_v0) {
+	var y = _v0.b;
+	return y;
+};
+var $elm$html$Html$Attributes$classList = function (classes) {
+	return $elm$html$Html$Attributes$class(
+		A2(
+			$elm$core$String$join,
+			' ',
+			A2(
+				$elm$core$List$map,
+				$elm$core$Tuple$first,
+				A2($elm$core$List$filter, $elm$core$Tuple$second, classes))));
+};
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -6202,8 +6236,6 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		'click',
 		$elm$json$Json$Decode$succeed(msg));
 };
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Views$StyledViews$button = F2(
@@ -6212,8 +6244,17 @@ var $author$project$Views$StyledViews$button = F2(
 			$elm$html$Html$button,
 			_List_fromArray(
 				[
-					A2($elm$html$Html$Attributes$style, 'padding', '12px 20px'),
-					A2($elm$html$Html$Attributes$style, 'border-radius', '8px'),
+					$elm$html$Html$Attributes$classList(
+					_List_fromArray(
+						[
+							_Utils_Tuple2('bg-blue-500', true),
+							_Utils_Tuple2('hover:bg-blue-700', true),
+							_Utils_Tuple2('text-white', true),
+							_Utils_Tuple2('font-bold', true),
+							_Utils_Tuple2('py-2', true),
+							_Utils_Tuple2('px-4', true),
+							_Utils_Tuple2('rounded', true)
+						])),
 					$elm$html$Html$Events$onClick(msg)
 				]),
 			_List_fromArray(
@@ -6222,6 +6263,8 @@ var $author$project$Views$StyledViews$button = F2(
 				]));
 	});
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Views$StyledViews$container = function (children) {
 	return A2(
 		$elm$html$Html$div,
@@ -6270,10 +6313,14 @@ var $author$project$Views$StyledViews$flexContainer = function (children) {
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-				A2($elm$html$Html$Attributes$style, 'justify-content', 'space-between'),
-				A2($elm$html$Html$Attributes$style, 'margin', '20px 0'),
-				A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap')
+				$elm$html$Html$Attributes$classList(
+				_List_fromArray(
+					[
+						_Utils_Tuple2('flex', true),
+						_Utils_Tuple2('flex-wrap', true),
+						_Utils_Tuple2('my-2', true),
+						_Utils_Tuple2('-mx-2', true)
+					]))
 			]),
 		children);
 };
@@ -6282,166 +6329,143 @@ var $author$project$Views$StyledViews$card = function (children) {
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'border', '1px solid rgba(100,100,100,0.5)'),
-				A2($elm$html$Html$Attributes$style, 'padding', '10px'),
-				A2($elm$html$Html$Attributes$style, 'border-radius', '6px'),
-				A2($elm$html$Html$Attributes$style, 'width', '250px'),
-				A2($elm$html$Html$Attributes$style, 'margin', '10px 0')
+				$elm$html$Html$Attributes$classList(
+				_List_fromArray(
+					[
+						_Utils_Tuple2('max-w', true),
+						_Utils_Tuple2('rounded', true),
+						_Utils_Tuple2('overflow-hidden', true),
+						_Utils_Tuple2('shadow-lg', true),
+						_Utils_Tuple2('p-4', true)
+					]))
 			]),
 		_List_fromArray(
 			[children]));
 };
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $elm$html$Html$td = _VirtualDom_node('td');
+var $author$project$Views$GeneralViews$monstersTableTd = function (attribute) {
+	return A2(
+		$elm$html$Html$td,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$classList(
+				_List_fromArray(
+					[
+						_Utils_Tuple2('w-3/5', true),
+						_Utils_Tuple2('px-4', true),
+						_Utils_Tuple2('py-2', true),
+						_Utils_Tuple2('text-right', true),
+						_Utils_Tuple2('border', true)
+					]))
+			]),
+		_List_fromArray(
+			[
+				$elm$html$Html$text(attribute)
+			]));
+};
+var $elm$html$Html$th = _VirtualDom_node('th');
+var $author$project$Views$GeneralViews$monstersTableTh = function (headerText) {
+	return A2(
+		$elm$html$Html$th,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$classList(
+				_List_fromArray(
+					[
+						_Utils_Tuple2('px-4', true),
+						_Utils_Tuple2('py-2', true),
+						_Utils_Tuple2('bg-gray-100', true),
+						_Utils_Tuple2('border', true),
+						_Utils_Tuple2('text-left', true),
+						_Utils_Tuple2('w-2/5', true)
+					]))
+			]),
+		_List_fromArray(
+			[
+				$elm$html$Html$text(headerText)
+			]));
+};
 var $elm$html$Html$p = _VirtualDom_node('p');
 var $elm$html$Html$table = _VirtualDom_node('table');
-var $elm$html$Html$td = _VirtualDom_node('td');
-var $elm$html$Html$th = _VirtualDom_node('th');
 var $elm$html$Html$tr = _VirtualDom_node('tr');
 var $author$project$Views$GeneralViews$monsterCard = function (monster) {
-	return $author$project$Views$StyledViews$card(
-		A2(
-			$elm$html$Html$div,
-			_List_Nil,
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$h2,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'margin', '0')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text(monster.aG)
-						])),
-					A2(
-					$elm$html$Html$p,
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$classList(
+				_List_fromArray(
+					[
+						_Utils_Tuple2('w-1/3', true),
+						_Utils_Tuple2('px-4', true),
+						_Utils_Tuple2('mb-4', true)
+					]))
+			]),
+		_List_fromArray(
+			[
+				$author$project$Views$StyledViews$card(
+				A2(
+					$elm$html$Html$div,
 					_List_Nil,
 					_List_fromArray(
 						[
-							$elm$html$Html$text('Attributes')
-						])),
-					A2(
-					$elm$html$Html$table,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'width', '100%'),
-							A2($elm$html$Html$Attributes$style, 'border-spacing', '0'),
-							A2($elm$html$Html$Attributes$style, 'margin', 'auto')
-						]),
-					_List_fromArray(
-						[
 							A2(
-							$elm$html$Html$tr,
+							$elm$html$Html$h2,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('w-0')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(monster.aG)
+								])),
+							A2(
+							$elm$html$Html$p,
 							_List_Nil,
 							_List_fromArray(
 								[
+									$elm$html$Html$text('Attributes')
+								])),
+							A2(
+							$elm$html$Html$table,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('table-auto'),
+									$elm$html$Html$Attributes$class('w-full')
+								]),
+							_List_fromArray(
+								[
 									A2(
-									$elm$html$Html$th,
+									$elm$html$Html$tr,
+									_List_Nil,
 									_List_fromArray(
 										[
-											A2($elm$html$Html$Attributes$style, 'width', '40%'),
-											A2($elm$html$Html$Attributes$style, 'text-align', 'left'),
-											A2($elm$html$Html$Attributes$style, 'background-color', '#ddd'),
-											A2($elm$html$Html$Attributes$style, 'padding', '8px'),
-											A2($elm$html$Html$Attributes$style, 'border', '1px solid #ccc'),
-											A2($elm$html$Html$Attributes$style, 'border-bottom', 'none')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Life')
-										])),
-									A2(
-									$elm$html$Html$td,
-									_List_fromArray(
-										[
-											A2($elm$html$Html$Attributes$style, 'width', '60%'),
-											A2($elm$html$Html$Attributes$style, 'text-align', 'right'),
-											A2($elm$html$Html$Attributes$style, 'padding', '8px'),
-											A2($elm$html$Html$Attributes$style, 'border', '1px solid #ccc'),
-											A2($elm$html$Html$Attributes$style, 'border-left', 'none'),
-											A2($elm$html$Html$Attributes$style, 'border-bottom', 'none')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text(
+											$author$project$Views$GeneralViews$monstersTableTh('Life'),
+											$author$project$Views$GeneralViews$monstersTableTd(
 											$elm$core$String$fromInt(monster.aE))
-										]))
-								])),
-							A2(
-							$elm$html$Html$tr,
-							_List_Nil,
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$th,
-									_List_fromArray(
-										[
-											A2($elm$html$Html$Attributes$style, 'width', '40%'),
-											A2($elm$html$Html$Attributes$style, 'text-align', 'left'),
-											A2($elm$html$Html$Attributes$style, 'background-color', '#ddd'),
-											A2($elm$html$Html$Attributes$style, 'padding', '8px'),
-											A2($elm$html$Html$Attributes$style, 'border', '1px solid #ccc'),
-											A2($elm$html$Html$Attributes$style, 'border-bottom', 'none')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Power')
 										])),
 									A2(
-									$elm$html$Html$td,
+									$elm$html$Html$tr,
+									_List_Nil,
 									_List_fromArray(
 										[
-											A2($elm$html$Html$Attributes$style, 'width', '60%'),
-											A2($elm$html$Html$Attributes$style, 'text-align', 'right'),
-											A2($elm$html$Html$Attributes$style, 'padding', '8px'),
-											A2($elm$html$Html$Attributes$style, 'border', '1px solid #ccc'),
-											A2($elm$html$Html$Attributes$style, 'border-left', 'none'),
-											A2($elm$html$Html$Attributes$style, 'border-bottom', 'none')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text(
+											$author$project$Views$GeneralViews$monstersTableTh('Power'),
+											$author$project$Views$GeneralViews$monstersTableTd(
 											$elm$core$String$fromInt(monster.aK))
-										]))
-								])),
-							A2(
-							$elm$html$Html$tr,
-							_List_Nil,
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$th,
-									_List_fromArray(
-										[
-											A2($elm$html$Html$Attributes$style, 'width', '40%'),
-											A2($elm$html$Html$Attributes$style, 'text-align', 'left'),
-											A2($elm$html$Html$Attributes$style, 'background-color', '#ddd'),
-											A2($elm$html$Html$Attributes$style, 'padding', '8px'),
-											A2($elm$html$Html$Attributes$style, 'border', '1px solid #ccc')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Speed')
 										])),
 									A2(
-									$elm$html$Html$td,
+									$elm$html$Html$tr,
+									_List_Nil,
 									_List_fromArray(
 										[
-											A2($elm$html$Html$Attributes$style, 'width', '60%'),
-											A2($elm$html$Html$Attributes$style, 'text-align', 'right'),
-											A2($elm$html$Html$Attributes$style, 'padding', '8px'),
-											A2($elm$html$Html$Attributes$style, 'border', '1px solid #ccc'),
-											A2($elm$html$Html$Attributes$style, 'border-left', 'none')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text(
+											$author$project$Views$GeneralViews$monstersTableTh('Speed'),
+											$author$project$Views$GeneralViews$monstersTableTd(
 											$elm$core$String$fromInt(monster.aO))
 										]))
 								]))
-						]))
-				])));
+						])))
+			]));
 };
 var $author$project$Views$GeneralViews$monsterCardContainer = function (mons) {
 	switch (mons.$) {
@@ -6477,11 +6501,11 @@ var $author$project$Views$StyledViews$goodMessage = function (message) {
 		$elm$html$Html$span,
 		_List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'display', 'inline-block'),
-				A2($elm$html$Html$Attributes$style, 'padding', '12px 20px'),
-				A2($elm$html$Html$Attributes$style, 'color', 'white'),
-				A2($elm$html$Html$Attributes$style, 'background-color', '#43a047'),
-				A2($elm$html$Html$Attributes$style, 'border-radius', '8px')
+				$elm$html$Html$Attributes$classList(
+				_List_fromArray(
+					[
+						_Utils_Tuple2('text-gray-600', true)
+					]))
 			]),
 		_List_fromArray(
 			[
@@ -6508,6 +6532,22 @@ var $author$project$Views$GeneralViews$monstersCount = function (model) {
 					$elm$core$List$length(monsters)) + ' monsters'));
 	}
 };
+var $elm$html$Html$hr = _VirtualDom_node('hr');
+var $author$project$Views$StyledViews$separator = function (_v0) {
+	return A2(
+		$elm$html$Html$hr,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$classList(
+				_List_fromArray(
+					[
+						_Utils_Tuple2('my-8', true),
+						_Utils_Tuple2('border-b-2', true),
+						_Utils_Tuple2('border-gray-200', true)
+					]))
+			]),
+		_List_Nil);
+};
 var $author$project$Views$MainView$mainView = function (model) {
 	return $author$project$Views$StyledViews$container(
 		_List_fromArray(
@@ -6522,6 +6562,7 @@ var $author$project$Views$MainView$mainView = function (model) {
 					[
 						A2($author$project$Views$StyledViews$button, 'Add new monster', $author$project$Actions$OpenModal)
 					])),
+				$author$project$Views$StyledViews$separator(0),
 				$author$project$Views$GeneralViews$monstersCount(model),
 				$author$project$Views$GeneralViews$monsterCardContainer(model.G),
 				function () {

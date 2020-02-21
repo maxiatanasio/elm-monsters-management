@@ -1,7 +1,7 @@
 module Views.GeneralViews exposing (..)
 
 import Html exposing (Html, p, text, h2, table, tr, td, th, div)
-import Html.Attributes exposing (style)
+import Html.Attributes exposing (class, classList, style)
 
 import Models exposing (Monster)
 import PageDataModel exposing (Model, MonstersMessage(..))
@@ -22,72 +22,64 @@ monstersCount model =
 
 monsterCard: Monster -> Html Message
 monsterCard monster =
-    card (
-        div [] [
-            h2 [
-                style "margin" "0"
-            ] [text monster.name],
-                p [] [text "Attributes"],
-                table [
-                    style "width" "100%",
-                    style "border-spacing" "0",
-                    style "margin" "auto"
-                ] [
-                    tr [] [
-                        th [
-                            style "width" "40%",
-                            style "text-align" "left",
-                            style "background-color" "#ddd",
-                            style "padding" "8px",
-                            style "border" "1px solid #ccc",
-                            style "border-bottom" "none"
-                        ] [text "Life"],
-                        td [
-                            style "width" "60%",
-                            style "text-align" "right",
-                            style "padding" "8px",
-                            style "border" "1px solid #ccc",
-                            style "border-left" "none",
-                            style "border-bottom" "none"
-                        ] [text (String.fromInt monster.lif)]
-                    ],
-                    tr [] [
-                        th [
-                            style "width" "40%",
-                            style "text-align" "left",
-                            style "background-color" "#ddd",
-                            style "padding" "8px",
-                            style "border" "1px solid #ccc",
-                            style "border-bottom" "none"
-                        ] [text "Power"],
-                        td [
-                            style "width" "60%",
-                            style "text-align" "right",
-                            style "padding" "8px",
-                            style "border" "1px solid #ccc",
-                            style "border-left" "none",
-                            style "border-bottom" "none"
-                        ] [text (String.fromInt monster.pow)]
-                    ],
-                    tr [] [
-                        th [
-                            style "width" "40%",
-                            style "text-align" "left",
-                            style "background-color" "#ddd",
-                            style "padding" "8px",
-                            style "border" "1px solid #ccc"
-                        ] [text "Speed"],
-                        td [
-                            style "width" "60%",
-                            style "text-align" "right",
-                            style "padding" "8px",
-                            style "border" "1px solid #ccc",
-                            style "border-left" "none"
-                        ] [text (String.fromInt monster.spd)]
-                    ]
-                ]
+    div [
+        classList [
+            ("w-1/3", True),
+            ("px-4", True),
+            ("mb-4", True)
         ]
-    )
+    ] [
+        card (
+            div [] [
+                h2 [
+                    class "w-0"
+                ] [text monster.name],
+                    p [] [text "Attributes"],
+                    table [
+                        class "table-auto",
+                        class "w-full"
+                    ] [
+                        tr [] [
+                            monstersTableTh "Life",
+                            monstersTableTd (String.fromInt monster.lif)
+                        ],
+                        tr [] [
+                            monstersTableTh "Power",
+                            monstersTableTd (String.fromInt monster.pow)
+                        ],
+                        tr [] [
+                            monstersTableTh "Speed",
+                            monstersTableTd (String.fromInt monster.spd)
+                        ]
+                    ]
+            ]
+        )
+    ]
+
+monstersTableTh: String -> Html Message
+monstersTableTh headerText =
+    th [
+        classList [
+            ("px-4", True),
+            ("py-2", True),
+            ("bg-gray-100", True),
+            ("border", True),
+            ("text-left", True),
+            ("w-2/5", True)
+        ]
+    ] [text headerText]
+
+monstersTableTd: String -> Html Message
+monstersTableTd attribute =
+    td [
+        classList [
+            ("w-3/5", True),
+            ("px-4", True),
+            ("py-2", True),
+            ("text-right", True),
+            ("border", True)
+        ]
+    ] [text attribute]
 
 monsterCardContainer: MonstersMessage -> Html Message
 monsterCardContainer mons =

@@ -1,6 +1,6 @@
 module Views.StyledViews exposing (..)
 
-import Html exposing (Html, div, text, span)
+import Html exposing (Html, div, hr, span, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 
@@ -17,11 +17,9 @@ container children =
 goodMessage: String -> Html Message
 goodMessage message =
     span [
-        style "display" "inline-block",
-        style "padding" "12px 20px",
-        style "color" "white",
-        style "background-color" "#43a047",
-        style "border-radius" "8px"
+        classList [
+            ("text-gray-600", True)
+        ]
     ] [text message]
 
 badMessage: String -> Html Message
@@ -37,20 +35,24 @@ badMessage message =
 flexContainer: List (Html Message) -> Html Message
 flexContainer children =
     div [
-        style "display" "flex",
-        style "justify-content" "space-between",
-        style "margin" "20px 0",
-        style "flex-wrap" "wrap"
+        classList [
+            ("flex", True),
+            ("flex-wrap", True),
+            ("my-2", True),
+            ("-mx-2", True)
+        ]
     ] children
 
 card: Html Message -> Html Message
 card children =
     div [
-        style "border" "1px solid rgba(100,100,100,0.5)",
-        style "padding" "10px",
-        style "border-radius" "6px",
-        style "width" "250px",
-        style "margin" "10px 0"
+        classList [
+            ("max-w", True),
+            ("rounded", True),
+            ("overflow-hidden", True),
+            ("shadow-lg", True),
+            ("p-4", True)
+        ]
     ] [children]
 
 modal: List (Html Message) -> Html Message
@@ -79,9 +81,26 @@ modal children =
 button: String -> Message -> Html Message
 button buttonText msg =
     Html.button [
-        style "padding" "12px 20px",
-        style "border-radius" "8px",
+        classList [
+            ("bg-blue-500", True),
+            ("hover:bg-blue-700", True),
+            ("text-white", True),
+            ("font-bold", True),
+            ("py-2", True),
+            ("px-4", True),
+            ("rounded", True)
+        ],
         onClick msg
     ] [
         text buttonText
     ]
+
+separator: () -> Html Message
+separator _ =
+    hr [
+        classList [
+            ("my-8", True),
+            ("border-b-2", True),
+            ("border-gray-200", True)
+        ]
+    ] []
