@@ -1,12 +1,12 @@
-module Components.GeneralComponents exposing (..)
+module Views.GeneralViews exposing (..)
 
 import Html exposing (Html, p, text, h2, table, tr, td, th, div)
 import Html.Attributes exposing (style)
 
 import Models exposing (Monster)
-import PageModels exposing (Model, MonstersMessage(..))
-import UpdateType exposing (Message)
-import Components.StyledComponents exposing (goodMessage, badMessage,card, flexContainer)
+import PageDataModel exposing (Model, MonstersMessage(..))
+import Actions exposing (Message)
+import Views.StyledViews exposing (goodMessage, badMessage,card, flexContainer)
 
 monstersCount: Model -> Html Message
 monstersCount model =

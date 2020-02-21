@@ -1,14 +1,12 @@
 module Main exposing (..)
 
 import Http exposing (get, Error, expectJson)
-import Html exposing (Html, div, text)
-import Html.Attributes exposing (style)
+import Html exposing (Html)
 
 import Decoders exposing (monsterListDecoder)
-import PageModels exposing (MonstersMessage(..), ModalStatus(..),Model)
-import Components.GeneralComponents exposing (monstersCount, monsterCardContainer)
-import Components.StyledComponents exposing (container, modal, button)
-import UpdateType exposing (Message(..))
+import PageDataModel exposing (MonstersMessage(..), ModalStatus(..),Model)
+import Views.MainView exposing (mainView)
+import Actions exposing (Message(..))
 
 
 import Browser
@@ -49,20 +47,7 @@ update message model =
 
 view: Model -> Html Message
 view model =
-    container [
-        div [ style "margin-bottom" "20px"] [
-            button "Add new monster" OpenModal
-        ],
-        (monstersCount model),
-        monsterCardContainer model.monsters,
-        (case model.modal of
-            Open ->
-                modal [text "testing modal"]
-            Close ->
-                text ""
-        )
-
-    ]
+    mainView model
 
 -- Subscriptions
 subscriptions: Model -> Sub Message

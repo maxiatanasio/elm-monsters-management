@@ -1,4 +1,4 @@
-module UpdateType exposing (..)
+module Actions exposing (..)
 
 import Http exposing (Error)
 import Models exposing (Monster)

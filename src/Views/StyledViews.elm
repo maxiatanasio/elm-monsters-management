@@ -1,10 +1,10 @@
-module Components.StyledComponents exposing (..)
+module Views.StyledViews exposing (..)
 
 import Html exposing (Html, div, text, span)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 
-import UpdateType exposing (Message(..))
+import Actions exposing (Message(..))
 
 container: List (Html Message) -> Html Message
 container children =

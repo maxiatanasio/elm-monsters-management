@@ -1,4 +1,4 @@
-module PageModels exposing (..)
+module PageDataModel exposing (..)
 
 import Models exposing (Monster)
 
